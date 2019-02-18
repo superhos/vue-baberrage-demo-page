@@ -19,6 +19,7 @@
         :isShow= "barrageIsShow"
         :barrageList = "barrageList"
         :loop = "barrageLoop"
+        :maxWordCount = "60"
         >
       </vue-baberrage>
       <div class="demo-control">
@@ -73,7 +74,7 @@ export default {
   components: {VueGithubCorners},
   data () {
     return {
-      msg: 'Hello World!vue-baberrage 2.0.0!',
+      msg: 'Hello World! Vue-baberrage 2.1.9!',
       repoUrl: 'https://github.com/superhos/vue-baberrage',
       catColor: '#025d63',
       bgColor: '#FFF',
@@ -354,5 +355,12 @@ a {
   width: 60%;
   border-top: 1px solid #e3e3e3;
   padding-top: 1em;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .box-container {
+    flex-direction: column;
+  }
 }
 </style>
