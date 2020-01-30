@@ -17,7 +17,7 @@
       </div>
       <vue-baberrage
         :isShow= "barrageIsShow"
-        :barrageList = "barrageList"
+        :barrageList = "messageList"
         :loop = "barrageLoop"
         :maxWordCount = "60"
         >
@@ -64,6 +64,8 @@
 </template>
 
 <script>
+import 'es6-promise/auto'
+import { mapState, mapActions } from 'vuex'
 import { VueGithubCorners } from 'vue2-github-corners'
 import { MESSAGE_TYPE } from 'vue-baberrage'
 import paper from './paper.json'
@@ -72,9 +74,12 @@ import { setInterval, clearInterval } from 'timers';
 export default {
   name: 'app',
   components: {VueGithubCorners},
+  computed: mapState({
+    messageList: state => state.baberrage.messageList
+  }),
   data () {
     return {
-      msg: 'Hello World! Vue-baberrage 2.1.9!',
+      msg: 'Hello World! Vue-baberrage 3.0.2!',
       repoUrl: 'https://github.com/superhos/vue-baberrage',
       catColor: '#025d63',
       bgColor: '#FFF',
@@ -92,21 +97,31 @@ export default {
         clearInterval(intervalId)
         return
       }
-      this.barrageList.push(paper[id++])
+      this.addMessage(paper[id++])
     }, 1000)
   },
   methods: {
+    ...mapActions('baberrage', [
+      'addMessage'
+    ]),
     removeList () {
       this.barrageList = []
     },
     addToList () {
-      this.barrageList.push({
+      this.addMessage({
         id: ++this.currentId,
         avatar: 'https://github.com/superhos/vue-baberrage/blob/master/static/avatar.jpg?raw=true',
         msg: this.msg,
         time: 15,
         type: MESSAGE_TYPE.NORMAL
       })
+      // this.barrageList.push({
+      //   id: ++this.currentId,
+      //   avatar: 'https://github.com/superhos/vue-baberrage/blob/master/static/avatar.jpg?raw=true',
+      //   msg: this.msg,
+      //   time: 15,
+      //   type: MESSAGE_TYPE.NORMAL
+      // })
     },
     changeLang (lang) {
       this.$i18n.locale = lang
