@@ -4,6 +4,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import { vueBaberrage } from 'vue-baberrage'
+// import { vueBaberrage } from './lib/vue-baberrage'
 import messages from './languages'
 
 Vue.use(vueBaberrage)

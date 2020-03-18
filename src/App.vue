@@ -31,9 +31,9 @@
     </div>
     <div class="content">
       <h1>{{$t("message.introduce")}}</h1>
-      <img alt="" src="https://img.shields.io/badge/vueBaberrage.js-2.1.2-green.svg">
+      <img alt="" src="https://img.shields.io/badge/vueBaberrage.js-3.2.4-green.svg">
       <img alt="" src="https://img.shields.io/badge/vue.js-2.5.22-brightgreen.svg">
-      <img alt="" src="https://img.shields.io/badge/minified size-20kB-blue.svg">
+      <img alt="" src="https://img.shields.io/badge/minified size-15kB-blue.svg">
       
       <div class="button-group">
         <a :href="repoUrl" target="_blank">{{$t("message.start")}}</a>
@@ -79,7 +79,7 @@ export default {
   }),
   data () {
     return {
-      msg: 'Hello World! Vue-baberrage 3.0.2!',
+      msg: 'Hello World! Vue-baberrage 3.2.4!',
       repoUrl: 'https://github.com/superhos/vue-baberrage',
       catColor: '#025d63',
       bgColor: '#FFF',
@@ -110,18 +110,16 @@ export default {
     addToList () {
       this.addMessage({
         id: ++this.currentId,
-        avatar: 'https://github.com/superhos/vue-baberrage/blob/master/static/avatar.jpg?raw=true',
+        avatar: 'https://s2.ax1x.com/2020/02/17/3PmEyd.md.png',
         msg: this.msg,
-        time: 15,
+        // time: Math.floor(Math.random() * 10 + 5),
+        // style: {
+        //   fontSize: 15
+        // },
+        time: 5,
+        // extraWidth: 60,
         type: MESSAGE_TYPE.NORMAL
       })
-      // this.barrageList.push({
-      //   id: ++this.currentId,
-      //   avatar: 'https://github.com/superhos/vue-baberrage/blob/master/static/avatar.jpg?raw=true',
-      //   msg: this.msg,
-      //   time: 15,
-      //   type: MESSAGE_TYPE.NORMAL
-      // })
     },
     changeLang (lang) {
       this.$i18n.locale = lang
